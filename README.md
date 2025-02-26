@@ -3,6 +3,8 @@ An AI-Powered Medical Diagnostic Assistant
 
 This project uses a fine-tuned **LLM** (DeepSeek-R1-Distill-Llama-8B) to analyze medical queries and provide diagnostic insights. The backend is built with Node.js, and the frontend uses HTML/CSS/JavaScript for a simple user interface.  
 
+<img src="https://github.com/user-attachments/assets/6811f093-c415-4fb5-85fc-2f17e8e84fc2" alt="W B Chart" height="300">
+
 ---
 ## Key Features
 - Interpreting Patient Symptoms: Analyzing user-inputted symptoms and patient history through natural language processing.
