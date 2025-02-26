@@ -50,7 +50,7 @@ MediMind/
 │ │ │ ├─ package-lock.json         # Auto-generated dependency tree
 │ ├─ package.json                  # Node.js project metadata and dependencies
 │ ├─ MediMind_LLMFine-tuning.ipynb # Jupyter notebook for fine-tuning the model
-│ | Requirements.txt               # Install Dependencies
+│ ├─ requirements.txt               # Install Dependencies
 │ └─ README.md                     # Project documentation
 ```
 
@@ -113,6 +113,7 @@ Open the localhost URL appearing after npm start in your browser.
 ```bash
 A 61-year-old woman with a long history of involuntary urine loss during activities like coughing or sneezing but no leakage at night undergoes a gynecological exam and Q-tip test. Based on these findings, what would cystometry most likely reveal about her residual volume and detrusor contractions?
 ```
+<img src="https://github.com/user-attachments/assets/f4ebc538-a3f6-46ae-b789-156f995a99f6" alt="W B Chart" height="350">
 
 #### Sample Response:
 Chain of Thought
@@ -135,6 +136,7 @@ Putting it all together, if she has a low bladder capacity, her bladder can't ho
 
 So, based on her symptoms and the Q-tip test, it's reasonable to expect that her cystometry would show a low residual volume and weak detrusor contractions. These findings would align with the idea that she's struggling with bladder control due to weak pelvic floor muscle function and a limited bladder capacity.
 `````
+<img src="https://github.com/user-attachments/assets/877053fc-cbbd-44de-a03b-894878de9020" alt="W B Chart" height="350">
 
 Final Response:
 `````
