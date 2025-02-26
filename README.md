@@ -1,7 +1,7 @@
 # MediMind
 An AI-Powered Medical Diagnostic Assistant
 
-This project uses a fine-tuned **LLM** (**DeepSeek-R1-Distill-Llama-8B**) to analyze medical queries and provide diagnostic insights. The backend is built with **Node.js**, and the frontend uses **HTML/CSS/JavaScript** for a simple user interface.  
+This project uses a fine-tuned **LLM** (DeepSeek-R1-Distill-Llama-8B) to analyze medical queries and provide diagnostic insights. The backend is built with Node.js, and the frontend uses HTML/CSS/JavaScript for a simple user interface.  
 
 ---
 ## Key Features
@@ -17,88 +17,8 @@ This project uses a fine-tuned **LLM** (**DeepSeek-R1-Distill-Llama-8B**) to ana
 
 3. Fine-tuning the LLM: The training process involves fine-tuning the DeepSeek-R1-Distill-Llama-8B model using the SFTTrainer with the FreedomIntelligence/medical-o1-reasoning-SFT dataset. The LoRA (Low-Rank Adaptation) approach adapts the model specifically for clinical reasoning by training on 500 medical Q&A pairs. The SFTTrainer uses a small batch size with gradient accumulation to optimize memory usage. Training utilises AdamW 8-bit optimizer and FP16/BF16 precision to reduce GPU memory load. This approach offers memory efficiency, quick convergence, and scalable fine-tuning, allowing the model to generate accurate medical diagnostics efficiently.
 
----
+## Model Training Results
 
-## 🚀 Project Structure 
-
-medical-diagnostic-ai-assistant/ 
-
-├── backend/ # Node.js backend server 
-
-│ ├── diagnose.py # Python script to load and run the model 
-
-│ ├── app.js # Node.js backend logic 
-
-│ ├── model_lora/ # Folder containing the fine-tuned LLM model 
-
-│ ├── package.json # Backend dependencies 
-
-│ └── requirements.txt # Python dependencies 
-
-├── frontend/
-
-│ ├── index.html # Frontend HTML file 
-
-│ ├── styles.css # Frontend CSS styling 
-
-│ └── app.js # Frontend JavaScript 
-
-└── README.md # Project documentation
-
-
----
-
-## 🛠️ **Setup and Installation**  
-
-### 1. **Clone the Repository:**  
-```bash
-git clone <repository_url>
-cd medical-diagnostic-ai-assistant
-```
-
-### 2. Set Up Python Environment for Model Inference:
-Create a Virtual Environment and Install Dependencies:
-``` bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install Python packages
-pip install -r requirements.txt
-```
-
-requirements.txt file:
-``` bash
-transformers
-torch
-unsloth
-flask
-```
-
-### 3. Install Node.js Dependencies:
-```bash
-# Ensure you're still in the backend directory
-npm install
-```
-
-## ▶️ Running the Application
-### 1. Start the Backend Server:
-```bash
-# Run the Python backend for model inference
-python3 diagnose.py
-```
-
-```bash
-# Run the Node.js server
-node app.js
-```
-### 2. Open the Frontend:
-Open index.html in your browser or run a local server (e.g., Live Server in VSCode).
-
-### 3. Test the Application:
-Enter a medical query in the frontend interface and receive diagnostic insights from the model.
-
-## Results
 #### Training Loss Progression
 
 |   Step   |   Training Loss   |
@@ -110,10 +30,84 @@ Enter a medical query in the frontend interface and receive diagnostic insights 
 | 50       | 1.344300          |
 | 60       | 1.314000          |
 
-This is the training loss curve from "Weights and Biases"
+This is the training loss curve through _Weights and Biases_
 
-![W B Chart 26_02_2025, 11_43_07](https://github.com/user-attachments/assets/5c3ab8b0-8ea2-46b6-8dfd-0c4a3e5982b2)
+<img src="https://github.com/user-attachments/assets/5c3ab8b0-8ea2-46b6-8dfd-0c4a3e5982b2" alt="W B Chart" height="300">
 
+---
+
+## 🚀 Project Structure 
+
+```
+MediMind/ 
+├─ Final_App/
+│ ├─ public/
+│ │ ├─ model/
+│ │ │ ├─ model_lora/             # Fine-tuned LLM model directory
+│ │ │ ├─ diagnose.py             # Python script for model inference
+│ │ │ │ │ ├─ index.html           # Frontend HTML file
+│ │ └─ index.js                   # JavaScript for frontend-backend integration
+│ │ │ ├─ package-lock.json         # Auto-generated dependency tree
+│ ├─ package.json                  # Node.js project metadata and dependencies
+│ ├─ MediMind_LLMFine-tuning.ipynb # Jupyter notebook for fine-tuning the model
+│ | Requirements.txt               # Install Dependencies
+│ └─ README.md                     # Project documentation
+```
+
+---
+
+## 🛠️ Setup and Installation  
+
+### 1. Clone the Repository:  
+```bash
+git clone "https://github.com/nithya333/MediMind.git"
+cd MediMind
+```
+
+### 2. Set Up Python Environment for Model Inference:
+Create a Virtual Environment and Install Dependencies:
+``` bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate 
+
+# Install Python packages
+pip install -r requirements.txt
+```
+
+### 3. Install Node.js Dependencies:
+```bash
+npm install
+```
+
+### 4. Setting up the LLM
+Due to the size limitations of GitHub upload, the _adapter_model.safetensors_ is uploaded on Google Drive at :
+https://drive.google.com/file/d/1T1DYOLlb-q-1pAmc2L7zBrjP-6YDqvlP/view?usp=sharing
+
+Download this file and keep it in this directory 
+`````
+/MediMind/Final_App/public/model/model_lora
+`````
+
+---
+
+## Running the Application
+### 1. Direct model inferencing:
+```bash
+# Run the Python backend for model inference
+python3 diagnose.py "user-query"
+```
+The input to this diagnose.py is the user health condition query and the output is the LLM medical response.
+
+### 2. Web Interface:
+```bash
+npm start
+```
+Open the localhost URL appearing after npm start in your browser.
+
+---
+
+## Results
 
 #### Sample Query
 ```bash
